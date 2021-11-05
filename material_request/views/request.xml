@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="material_request_form" model="ir.ui.view">
+        <field name="name">Material Request</field>
+        <field name="model">product.request</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button string="Confirm"
+                            name="action_confirm"
+                            states="draft" type="object" class="oe_highlight"/>
+                    <button string="Approve"
+                            name="action_approve"
+                            states="submit" type="object" class="oe_highlight"
+                            groups="material_request.group_request_manager"/>
+                    <button string="Approve"
+                            name="action_approve"
+                            states="second_approve" type="object"
+                            class="oe_highlight"
+                            groups="material_request.group_request_head"/>
+                    <button string="Reject" name="action_reject"
+                            states="submit,second_approve" type="object"
+                            class="oe_highlight"
+                            groups="material_request.group_request_head"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <field name="responsible_user"/>
+                        <!--                        <field name="approval_count"/>-->
+                    </group>
+                    <notebook>
+                        <page name="product_lines" string="Products">
+                            <field name="product_ids">
+                                <tree>
+                                    <field name="product_id"/>
+                                    <field name="route"/>
+                                    <field name="price_unit"/>
+                                    <field name="product_uom_qty"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="o_attachment_preview"/>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"
+                           groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <!--    tree view      -->
+    <record id="material_request_tree" model="ir.ui.view">
+        <field name="name">material.request.tree</field>
+        <field name="model">product.request</field>
+        <field name="arch" type="xml">
+            <tree>
+
+                <field name="name"/>
+                <field name="responsible_user"/>
+                <field name="product_ids"/>
+                <field name="state"/>
+            </tree>
+
+        </field>
+    </record>
+    <!--One to many form view -->
+    <record id="material_request_product_line_form" model="ir.ui.view">
+        <field name="name">Material Request Lines</field>
+        <field name="model">product.line</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="product_id"/>
+                        <field name="route"/></group>
+                    <group>
+                        <field name="price_unit"/>
+                        <field name="product_uom_qty"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!--    main view   -->
+
+    <record id="request_action" model="ir.actions.act_window">
+        <field name="name">Request</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product.request</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new Request!
+            </p>
+        </field>
+    </record>
+    <menuitem id="request_root"
+              name="Material Request"
+              sequence="7"/>
+    <menuitem id="request_management_root"
+              name="Request"
+              parent="request_root"
+              action="request_action"
+              sequence="2"/>
+</odoo>
+
