@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id="product_brand_view">
+        <field name="name">product.view</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <field name="barcode" position="after">
+                <field name="product_master_type"/>
+                <field name="brand"
+                       attrs="{'invisible': [('product_master_type','=','single')]}"/>
+            </field>
+        </field>
+    </record>
+
+
+    <record model="ir.ui.view" id="customer_view">
+        <field name="name">customer.view</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <field name="vat" position="after">
+                <field name="prime"/>
+            </field>
+        </field>
+    </record>
+
+
+    <!--    <record model="ir.ui.view" id="customer_prime_view">-->
+    <!--        <field name="name">customer.prime.view</field>-->
+    <!--        <field name="model">sale.order</field>-->
+    <!--        <field name="inherit_id" ref="base.view_partner_form"/>-->
+    <!--        <field name="arch" type="xml">-->
+    <!--            <field name="vat" position="after">-->
+    <!--                <field name="prime"/>-->
+    <!--            </field>-->
+    <!--        </field>-->
+    <!--    </record>-->
+
+
+    <record id="view_product_template_tree" model="ir.ui.view">
+        <field name="name">product.template.brand.tree.inherit</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_tree_view"/>
+        <field name="arch" type="xml">
+            <!--                <field name="uom_id" position="before">-->
+            <!--                    <field name="brand" attrs="{'invisible':[('type', '!=', 'product')]}" optional="show" decoration-danger="qty_available &lt; 0"/>-->
+            <!--                </field>-->
+            <field name="default_code" position="after">
+                <field name="brand"/>
+            </field>
+        </field>
+    </record>
+
+
+    <record id="action_product_brand" model="ir.actions.act_window">
+        <field name="name">Products Brand</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product.brand</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new product brand!
+            </p>
+        </field>
+    </record>
+
+    <record id="view_prime" model="ir.ui.view">
+        <field name="name">prime.customer</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <field name="sale_order_template_id" position="after">
+                <field name="is_prime"/>
+            </field>
+            <xpath expr="//field[@name='order_line']/tree/field[@name='tax_id']"
+                   position="after">
+                <field name="brand"/>
+            </xpath>
+        </field>
+    </record>
+
+
+    <!--    <record model="ir.ui.view" id="sale_order_view_inherit">-->
+    <!--        <field name="name">sale.order.view.inherit1</field>-->
+    <!--        <field name="model">sale.order</field>-->
+    <!--        <field name="inherit_id" ref="sale.view_order_form"/>-->
+    <!--        <field name="arch" type="xml">-->
+    <!--&lt;!&ndash;            <xpath expr="//page[@string='Order Lines']/field[@name='order_line']/tree[@string='Sales Order Lines']/field[@name='tax_id']"&ndash;&gt;-->
+    <!--&lt;!&ndash;                   position="after">&ndash;&gt;-->
+    <!--            <xpath expr="/tree/field[@name='tax_id']" position="after">-->
+    <!--                <field name="brand"/>-->
+    <!--            </xpath>-->
+    <!--        </field>-->
+    <!--    </record>-->
+
+    <!--    <record id="view_sales_order_tree" model="ir.ui.view">-->
+    <!--        <field name="name">product.sales.brand.tree.inherit</field>-->
+    <!--        <field name="model">sale.order</field>-->
+    <!--        <field name="inherit_id" ref="sales.view_order_line_tree"/>-->
+    <!--        <field name="arch" type="xml">-->
+    <!--            <field name="product_id" position="after">-->
+    <!--                <field name="brand"/>-->
+    <!--            </field>-->
+    <!--        </field>-->
+    <!--    </record>-->
+
+</odoo>
