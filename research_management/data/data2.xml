@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="sequence_order_seq_order" model="ir.sequence">
+            <field name="name">Sequence Order</field>
+            <field name="code">research.scholars</field>
+<!--          <field name="number_next_actual">0001</field>-->
+            <field name="prefix">SCH</field>
+            <field name="padding">4</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--form view-->
+    <record id="book_reservation_form" model="ir.ui.view">
+        <field name="name">Book Reservation</field>
+        <field name="model">book.reservation</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button string="Confirm" name="action_confirm"
+                            states="draft" type="object" class="oe_highlight"/>
+                    <button string="Create Invoice" name="action_create_invoice"
+                            states="approve" type="object" class="oe_highlight"/>
+                    <button string="Approve" name="action_approve"
+                            states="submit" type="object" class="oe_highlight"
+                            groups="research_management.group_event_manager"/>
+                    <button string="Reject" name="action_reject"
+                            states="submit" type="object" class="oe_highlight"
+                            groups="research_management.group_event_manager"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="scholars"/>
+                        </group>
+                        <group>
+                            <field name="responsible_user" readonly="1"/>
+                        </group>
+                        <notebook>
+                            <page name="book_information"
+                                  string="Books">
+
+                                <field name="books"/>
+
+                            </page>
+                        </notebook>
+                    </group>
+                </sheet>
+                <div class="o_attachment_preview"/>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"
+                           groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <!--list view-->
+
+    <record id="book_reservation_tree" model="ir.ui.view">
+        <field name="name">book.reservation.tree</field>
+        <field name="model">book.reservation</field>
+        <field name="arch" type="xml">
+            <tree>
+
+                <field name="name"/>
+                <field name="scholars"/>
+                <field name="books"/>
+                <field name="responsible_user"/>
+                <field name="state"/>
+            </tree>
+
+        </field>
+    </record>
+    <!--    group  creation-->
+
+    <record id="book_reservation_search" model="ir.ui.view">
+        <field name="name">book.reservation.search</field>
+        <field name="model">book.reservation</field>
+        <field name="arch" type="xml">
+            <search string="Search Related User">
+                <!--                <field name="name"></field>-->
+                <field name="responsible_user"/>
+                <group expand="1" string="Group By">
+                    <filter name='group_scholar' string="scholar"
+                            context="{'group_by':'scholars'}"/>
+                    <filter string="Rejected"
+                            domain="[('state', '=', 'cancel')]"
+                            name="state_cancel"/>
+                </group>
+            </search>
+        </field>
+    </record>
+<!--    inherit product and add field -->
+    <record model="ir.ui.view" id="product_view">
+        <field name="name">product.view</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <field name="barcode" position="after">
+                <field name="is_book"/>
+            </field>
+        </field>
+    </record>
+
+    <!--        smart button in contacts-->
+    <record id="scholar_smart_button" model="ir.ui.view">
+        <field name="name">scholar.view.buttons</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <div name="button_box" position="inside">
+                <button class="oe_stat_button" type="object" name="get_user"
+                        icon="fa-user">
+                    <field string="Scholar Details" name="responsible_user"
+                           widget="statinfo"/>
+                </button>
+            </div>
+        </field>
+    </record>
+
+    <!--      base view-->
+
+    <record id="book_reservation_action" model="ir.actions.act_window">
+        <field name="name">Book Reservation</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">book.reservation</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new Reservation for book!
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="research_book_reservation_root"
+              name="Book Reservation"
+              parent="research_root"
+              action="book_reservation_action"
+              sequence="2"/>
+</odoo>

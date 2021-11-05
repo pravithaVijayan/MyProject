@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.module.category" id="research_management_category">
+        <field name="name">Research Management</field>
+        <field name="sequence">10</field>
+    </record>
+
+    <record id="group_event_manager" model="res.groups">
+        <field name="name">Scholar Manager</field>
+        <field name="category_id" ref="research_management_category"/>
+    </record>
+    <record id="group_event_scholar" model="res.groups">
+        <field name="name">Scholar User</field>
+        <!--                    <field name="implied_ids" eval="[(4, ref('group_event_manager'))]"/>-->
+        <field name="category_id" ref="research_management_category"/>
+    </record>
+
+    <record id="book_reservation_rule" model="ir.rule">
+        <field name="name">See Only His Reservations</field>
+        <field name="model_id" ref="model_book_reservation"/>
+        <field name="domain_force">[('responsible_user', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_event_scholar'))]"/>
+    </record>
+</odoo>

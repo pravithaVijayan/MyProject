@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--form view of research scholars-->
+    <record id="research_form" model="ir.ui.view">
+        <field name="name">research.scholars.form</field>
+        <field name="model">research.scholars</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="scholar_id" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="first_name"/>
+                            <field name="middle_name"/>
+                            <field name="last_name"/>
+                        </group>
+                        <group>
+                            <field name="age"/>
+                            <field name="sex"/>
+                        </group>
+                        <notebook>
+                            <page name="institute_information"
+                                  string="Institute Information">
+                                <group>
+                                    <field name="institute"
+                                           string="Institute Name"/>
+                                    <field name="phone"
+                                           attrs="{'invisible': [('institute','=',False)]}"/>
+                                    <field name="address"
+                                           attrs="{'invisible': [('institute','=',False)]}"/>
+                                    <field name="note"/>
+                                </group>
+                            </page>
+                            <page name="other_information"
+                                  string="Other Information">
+                                <group>
+                                    <field name="contacts"
+                                           string="Related Partner"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </group>
+                </sheet>
+                <div class="o_attachment_preview"/>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"
+                           groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!--tree view of research scholars-->
+    <record id="research_scholars_tree" model="ir.ui.view">
+        <field name="name">research.scholars.tree</field>
+        <field name="model">research.scholars</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="scholar_id"/>
+                <field name="name"/>
+                <field name="age"/>
+                <field name="sex"/>
+                <field name="responsible_user"/>
+<!--                <field name="user"/>-->
+            </tree>
+
+        </field>
+    </record>
+
+
+    <record id="view_prime" model="ir.ui.view">
+        <field name="name">prime.customer</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <field name="sale_order_template_id" position="after">
+                <field name="book_reservation"/>
+            </field>
+
+            <!--            <xpath expr="//field[@name='order_line']/tree/field[@name='tax_id']"-->
+            <!--                   position="after">-->
+            <!--                <field name="brand"/>-->
+            <!--            </xpath>-->
+        </field>
+    </record>
+
+
+    <!--view of research scholars-->
+
+    <record id="research_action" model="ir.actions.act_window">
+        <field name="name">Research Scholars</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">research.scholars</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new Research Scholars!
+            </p>
+        </field>
+    </record>
+    <!-- view of inherit and adding is a partner in contacts-->
+
+    <record model="ir.ui.view" id="contact_view">
+        <field name="name">contact.view</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <field name="vat" position="after">
+                <field name="is_scholar"/>
+            </field>
+        </field>
+    </record>
+
+    <!-- view of research institutes-->
+
+    <record id="institute_action" model="ir.actions.act_window">
+        <field name="name">Institute</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">institute.details</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new Research Scholars!
+            </p>
+        </field>
+    </record>
+
+    <!--menu-->
+
+    <!--    <menuitem id="research_main_root"-->
+    <!--              name="Research Management"-->
+    <!--              sequence="7"/>-->
+    <menuitem id="research_root"
+              name="Research Management"
+              sequence="7"/>
+    <menuitem id="research_scholars_root"
+              name="Research Scholars"
+              parent="research_root"
+              action="research_action"
+              sequence="2"/>
+
+    <!--    <menuitem id="research_scholars_institute_root"&ndash;&gt;-->
+    <!--              name="Institute"-->
+    <!--              parent="research_root"-->
+    <!--              action="institute_action"-->
+    <!--              sequence="2"/>-->
+</odoo>
