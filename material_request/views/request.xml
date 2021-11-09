@@ -111,5 +111,11 @@
               parent="request_root"
               action="request_action"
               sequence="2"/>
+
+    <menuitem id="import_lots_root"
+              name="Import Lots"
+              parent="stock.menu_stock_inventory_control"
+              action="action_import_lots"
+              sequence="20"/>
 </odoo>
 

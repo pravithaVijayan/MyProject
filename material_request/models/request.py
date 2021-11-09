@@ -1,10 +1,32 @@
 # -*- coding: utf-8 -*-
 from odoo import api, fields, models, tools
+import os
+import xlrd
+
+from odoo.osv import osv
 
 
-# class SalesProductView(models.Model):
-#     # _name = "product.view"
-#     _inherit = 'purchase.order'
+class SalesProductView(models.Model):
+    _inherit = 'stock.production.lot'
+
+    def import_record(self):
+        loc = ('/home/ubuntu/Downloads/import2.xlsx')
+        wb = xlrd.open_workbook(loc)
+        sheet = wb.sheet_by_index(0)
+        # print(sheet.ncols)
+        sheet = wb.sheet_by_index(0)
+        # print(sheet.ncols)
+        for cols in range(1, sheet.ncols + 1):
+            product = self.env['product.product'].search(
+                [('name', '=', sheet.cell_value(cols, 1))])
+            company = self.env['res.company'].search(
+                [('name', '=', sheet.cell_value(cols, 2))])
+            # print(product, company)
+            self.env['stock.production.lot'].create({
+                'name': sheet.cell_value(cols, 0),
+                'product_id': product.id,
+                'company_id': company.id,
+            })
 
 
 class ProductBrand(models.Model):

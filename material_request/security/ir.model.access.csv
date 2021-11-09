@@ -1,4 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_product_request,access.product.request,model_product_request,material_request.group_event_scholar,1,1,1,1
 access_product_request_manager,access.product.request,model_product_request,base.group_user,1,1,0,1
+access_import_lots_wizard,access.import.lots.wizard,model_import_lots_wizard,base.group_user,1,1,1,1
 access_product_line,access.product.line,model_product_line,,1,1,1,1

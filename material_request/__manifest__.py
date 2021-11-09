@@ -9,12 +9,16 @@
     'category': 'Productivity',
     'website': 'https://www.odoo.com/page/billing',
     'images': [],
-    'depends': ['base_setup','stock','mail'],
+    'depends': ['base_setup', 'stock', 'mail'],
     'data': [
         'security/ir.model.access.csv',
         'security/security.xml',
-        'views/request.xml',
+        'data/cron.xml',
         'data/data1.xml',
+        'wizard/import_lot_views.xml',
+        'views/request.xml',
+        # 'data/lot_and_series.xml',
+        # 'views/lot_and_series.xml',
 
         # 'views/product.xml'
     ],
