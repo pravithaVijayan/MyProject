@@ -10,7 +10,7 @@ class SalesProductView(models.Model):
     _inherit = 'stock.production.lot'
 
     def import_record(self):
-        loc = ('/home/ubuntu/Downloads/import2.xlsx')
+        loc = '/home/ubuntu/Downloads/import2.xlsx'
         wb = xlrd.open_workbook(loc)
         sheet = wb.sheet_by_index(0)
         # print(sheet.ncols)

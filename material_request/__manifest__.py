@@ -17,6 +17,8 @@
         'data/data1.xml',
         'wizard/import_lot_views.xml',
         'views/request.xml',
+        'report/pdf_report.xml',
+        'report/report_request_template.xml',
         # 'data/lot_and_series.xml',
         # 'views/lot_and_series.xml',
 
