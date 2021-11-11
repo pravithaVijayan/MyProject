@@ -9,7 +9,7 @@
     'category': 'Productivity',
     'website': 'https://www.odoo.com/page/billing',
     'images': [],
-    'depends': ['base_setup', 'stock', 'mail'],
+    'depends': ['base_setup', 'stock', 'mail', 'report_xlsx'],
     'data': [
         'security/ir.model.access.csv',
         'security/security.xml',

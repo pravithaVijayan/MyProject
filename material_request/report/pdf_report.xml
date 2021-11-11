@@ -9,5 +9,14 @@
         <field name="binding_model_id" ref="model_product_request"/>
         <field name="binding_type">report</field>
     </record>
+    <record id="action_report_request_xls" model="ir.actions.report">
+        <field name="name">Material Request XLSX</field>
+        <field name="model">product.request</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_name">material_request.report_request_xls</field>
+        <field name="report_file">material_request.report_request_xls</field>
+        <field name="binding_model_id" ref="model_product_request"/>
+        <field name="binding_type">report</field>
+    </record>
 
 </odoo>
