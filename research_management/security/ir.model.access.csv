@@ -2,4 +2,5 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_research_scholars,access.research.scholars,model_research_scholars,base.group_user,1,1,1,1
 access_institute_details,access.institute.details,model_institute_details,base.group_user,1,1,1,1
 access_book_reservation,access.book.reservation,model_book_reservation,base.group_user,1,1,1,1
+access_import_report_wizard,access.import.report.wizard,model_import_report_wizard,base.group_user,1,1,1,1
 

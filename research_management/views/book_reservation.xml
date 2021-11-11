@@ -135,4 +135,5 @@
               parent="research_root"
               action="book_reservation_action"
               sequence="2"/>
+
 </odoo>
