@@ -133,7 +133,16 @@
     <menuitem id="research_book_reservation_root"
               name="Book Reservation"
               parent="research_root"
+              sequence="2"/>
+    <menuitem id="book_reservation_root"
+              name="Book Reservation"
+              parent="research_book_reservation_root"
               action="book_reservation_action"
               sequence="2"/>
+    <menuitem id="report_pdf_root"
+              name="Report"
+              parent="research_book_reservation_root"
+              action="action_import_report"
+              sequence="3"/>
 
 </odoo>

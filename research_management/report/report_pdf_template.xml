@@ -3,68 +3,75 @@
     <data>
         <template id="reservation_pdf">
             <t t-call="web.html_container">
-                <t t-foreach="docs" t-as="o">
-                    <t t-call="web.external_layout">
-                        <div class="page">
-                            <h3 t-field="o.name"/>
-                            <br/>
-                            <!--                            <h4>Responsible User :</h4>-->
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div class="text-center">
+                            <h2>Research Report</h2>
+                        </div>
+
+                        <div>
                             <table>
                                 <tr>
-                                    <td>User</td>
-                                    <td> : </td>
+                                    <td>Book</td>
+                                    <td>:</td>
                                     <td>
-                                        <h5 t-field="o.scholars"/>
+                                        <t t-foreach="book_ids" t-as="l">
+                                            <span t-esc="l"/>
+                                            <br/>
+                                        </t>
+                                    </td>
+                                </tr>
+                                <br/>
+                                <tr>
+                                    <td>Scholar</td>
+                                    <td>:</td>
+                                    <td>
+                                        <t t-esc="form['scholar_id'][1]"/>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Responsible</td>
-                                    <td> : </td>
+                                    <td>Date</td>
+                                    <td>:</td>
                                     <td>
-                                        <h5 t-field="o.responsible_user"/>
+                                        <t t-esc="date"/>
                                     </td>
                                 </tr>
                             </table>
                             <br/>
-                            <t t-if="o.books">
-                                <h2>Request Details</h2>
-                                <table class="table table-sm"
-                                       name="book_request">
-                                    <thead>
-                                        <tr>
-                                            <th>
-                                                <span>Product</span>
-                                            </th>
-                                            <th>
-                                                <span>Internal Reference</span>
-                                            </th>
-                                            <th>
-                                                <span>Unit Value</span>
-                                            </th>
-                                            <th>
-                                                <span>Quantity</span>
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <t t-foreach="o.books"
-                                       t-as="move">
-                                        <tr>
-                                            <td>
-                                                <span t-field="move.name"/>
-                                            </td>
-                                            <td>
-                                                <span t-field="move.default_code"/>
-                                            </td>
-                                            <td>
-                                                <span t-field="move.lst_price"/>
-                                            </td>
-                                        </tr>
-                                    </t>
-                                </table>
-                            </t>
+                            <br/>
                         </div>
 
-                    </t>
+                        <table class="table table-bordered mt32">
+                            <thead>
+                                <tr>
+                                    <th name="th_reference" class="text-left">
+                                        <span>Referance</span>
+                                    </th>
+                                    <!--                                    <th name="th_scholar" class="text-left">-->
+                                    <!--                                        <span>Books</span>-->
+                                    <!--                                    </th>-->
+                                    <th name="th_responsible"
+                                        class="text-left">
+                                        <span>Responsible</span>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <t t-foreach="reservations" t-as="line">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <span t-esc="line['name']"/>
+                                        </td>
+
+                                        <td>
+                                            <span t-esc="line['responsible_user'][1]"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </t>
+                        </table>
+                    </div>
+
                 </t>
             </t>
         </template>

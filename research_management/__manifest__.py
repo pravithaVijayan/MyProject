@@ -20,6 +20,7 @@
         'data/data2.xml',
         'wizard/pdf_report.xml',
         'report/report.xml',
+        'report/report_pdf.xml',
         'report/report_pdf_template.xml',
         'report/report_scholar_pdf_template.xml',
         # 'views/sales_book.xml'

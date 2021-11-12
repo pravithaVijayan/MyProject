@@ -6,10 +6,11 @@
         <field name="arch" type="xml">
             <form string="Import Lots">
                 <group class="oe_title">
-                    <field name="book_id"/>
+                    <field name="book_ids"/>
+                    <field name="scholar_id"/>
                 </group>
                 <footer>
-                    <button name="action_import_report" string="Print"
+                    <button name="action_report" string="Print"
                             type="object" class="btn-primary"/>
                     <button string="Cancel" class="btn-secondary"
                             special="cancel"/>

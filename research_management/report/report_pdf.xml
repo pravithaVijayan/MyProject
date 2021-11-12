@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="reservation_pdf_report">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.external_layout">
+                        <div class="page">
+                            <div class="text-center">
+                                <h2>Research Report</h2>
+                            </div>
+                            <h3 t-field="o.name"/>
+                            <br/>
+                            <!--                            <h4>Responsible User :</h4>-->
+                            <table>
+                                <tr>
+                                    <td>User</td>
+                                    <td>:</td>
+                                    <td>
+                                        <h5 t-field="o.scholars"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Responsible</td>
+                                    <td>:</td>
+                                    <td>
+                                        <h5 t-field="o.responsible_user"/>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br/>
+                            <t t-if="o.books">
+                                <h2>Request Details</h2>
+                                <table class="table table-sm"
+                                       name="book_request">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                <span>Product</span>
+                                            </th>
+                                            <th>
+                                                <span>Internal Reference</span>
+                                            </th>
+                                            <th>
+                                                <span>Unit Value</span>
+                                            </th>
+                                            <th>
+                                                <span>Quantity</span>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <t t-foreach="o.books"
+                                       t-as="move">
+                                        <tr>
+                                            <td>
+                                                <span t-field="move.name"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="move.default_code"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="move.lst_price"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </table>
+                            </t>
+                        </div>
+
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>
