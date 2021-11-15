@@ -51,7 +51,7 @@
 
                             <table class="table table-bordered mt32">
                                 <thead>
-                                    <tr style="background-color:#808080;">
+                                    <tr style="background-color:#C0C0C0;">
                                         <th name="th_reference"
                                             class="text-left">
                                             <span>Referance</span>

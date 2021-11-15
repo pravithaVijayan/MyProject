@@ -73,7 +73,6 @@ class ImportReportWizard(models.TransientModel):
         else:
             reservations = self.env['book.reservation'].search_read()
         data = {
-            # # 'model': 'import.report.wizard',
             'form': self.read()[0],
             'reservations': reservations,
             'book_ids': domain_names,
