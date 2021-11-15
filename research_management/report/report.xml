@@ -9,12 +9,14 @@
         <field name="binding_model_id" ref="model_book_reservation"/>
         <field name="binding_type">report</field>
     </record>
-        <record id="book_reservation_report_pdf" model="ir.actions.report">
+    <record id="book_reservation_report_pdf" model="ir.actions.report">
         <field name="name">Book Reservation Pdf</field>
         <field name="model">book.reservation</field>
         <field name="report_type">qweb-pdf</field>
-        <field name="report_name">research_management.reservation_pdf_report</field>
-        <field name="report_file">research_management.reservation_pdf_report</field>
+        <field name="report_name">research_management.reservation_pdf_report
+        </field>
+        <field name="report_file">research_management.reservation_pdf_report
+        </field>
         <field name="binding_model_id" ref="model_book_reservation"/>
         <field name="binding_type">report</field>
     </record>
@@ -25,6 +27,15 @@
         <field name="report_name">research_management.scholar_pdf</field>
         <field name="report_file">research_management.scholar_pdf</field>
         <field name="binding_model_id" ref="model_research_scholars"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="action_report_xlsx" model="ir.actions.report">
+        <field name="name">Book Reservation XLSX</field>
+        <field name="model">report.wizard</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_name">research_management.report_books_xls</field>
+        <field name="report_file">research_management.report_books_xls</field>
         <field name="binding_type">report</field>
     </record>
 </odoo>

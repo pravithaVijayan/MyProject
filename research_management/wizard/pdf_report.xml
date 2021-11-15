@@ -1,16 +1,18 @@
 <?xml version="1.0"?>
 <odoo>
     <record id="view_import_pdf_report_form" model="ir.ui.view">
-        <field name="name">import.report.wizard.form</field>
-        <field name="model">import.report.wizard</field>
+        <field name="name">report.wizard.form</field>
+        <field name="model">report.wizard</field>
         <field name="arch" type="xml">
             <form string="Import Lots">
                 <group class="oe_title">
-                    <field name="book_ids"/>
+                    <field name="book_ids" widget="many2many_tags"/>
                     <field name="scholar_id"/>
                 </group>
                 <footer>
-                    <button name="action_report" string="Print"
+                    <button name="action_report" string="PDF Report"
+                            type="object" class="btn-primary"/>
+                    <button name="action_xlsx_report" string="XLSX Report"
                             type="object" class="btn-primary"/>
                     <button string="Cancel" class="btn-secondary"
                             special="cancel"/>
@@ -20,9 +22,9 @@
     </record>
 
     <record id="action_import_report" model="ir.actions.act_window">
-        <field name="name">PDF Report</field>
+        <field name="name">Report</field>
         <field name="type">ir.actions.act_window</field>
-        <field name="res_model">import.report.wizard</field>
+        <field name="res_model">report.wizard</field>
         <field name="view_mode">form</field>
         <field name="view_id" ref="view_import_pdf_report_form"/>
         <field name="target">new</field>

@@ -10,7 +10,7 @@
     'website': 'https://www.odoo.com/page/billing',
     'images': [],
     'depends': ['base_setup', 'contacts', 'sale_management', 'mail', 'product',
-                'account'],
+                'account', 'report_xlsx'],
     'data': [
         'security/ir.model.access.csv',
         'security/security.xml',
@@ -19,6 +19,7 @@
         'data/data.xml',
         'data/data2.xml',
         'wizard/pdf_report.xml',
+        # 'wizard/xlsx_report.xml',
         'report/report.xml',
         'report/report_pdf.xml',
         'report/report_pdf_template.xml',

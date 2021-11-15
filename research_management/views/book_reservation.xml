@@ -140,9 +140,14 @@
               action="book_reservation_action"
               sequence="2"/>
     <menuitem id="report_pdf_root"
-              name="Report"
+              name="Reports"
               parent="research_book_reservation_root"
               action="action_import_report"
               sequence="3"/>
+<!--    <menuitem id="report_xlsx_root"-->
+<!--              name="Report XLSX"-->
+<!--              parent="research_book_reservation_root"-->
+<!--              action="action_xlsx_report"-->
+<!--              sequence="3"/>-->
 
 </odoo>
