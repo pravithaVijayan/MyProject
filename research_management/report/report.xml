@@ -6,20 +6,20 @@
         <field name="report_type">qweb-pdf</field>
         <field name="report_name">research_management.reservation_pdf</field>
         <field name="report_file">research_management.reservation_pdf</field>
-        <field name="binding_model_id" ref="model_book_reservation"/>
+        <field name="binding_model_id" eval="False"/>
         <field name="binding_type">report</field>
     </record>
-    <record id="book_reservation_report_pdf" model="ir.actions.report">
-        <field name="name">Book Reservation Pdf</field>
-        <field name="model">book.reservation</field>
-        <field name="report_type">qweb-pdf</field>
-        <field name="report_name">research_management.reservation_pdf_report
-        </field>
-        <field name="report_file">research_management.reservation_pdf_report
-        </field>
-        <field name="binding_model_id" ref="model_book_reservation"/>
-        <field name="binding_type">report</field>
-    </record>
+<!--    <record id="book_reservation_report_pdf" model="ir.actions.report">-->
+<!--        <field name="name">Book Reservation Pdf</field>-->
+<!--        <field name="model">book.reservation</field>-->
+<!--        <field name="report_type">qweb-pdf</field>-->
+<!--        <field name="report_name">research_management.reservation_pdf_report-->
+<!--        </field>-->
+<!--        <field name="report_file">research_management.reservation_pdf_report-->
+<!--        </field>-->
+<!--        <field name="binding_model_id" ref="model_book_reservation"/>-->
+<!--        <field name="binding_type">report</field>-->
+<!--    </record>-->
     <record id="research_scholars_report_pdf" model="ir.actions.report">
         <field name="name">Research Scholar Pdf</field>
         <field name="model">research.scholars</field>
