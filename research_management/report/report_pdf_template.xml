@@ -60,6 +60,10 @@
                                             class="text-left">
                                             <span>Responsible</span>
                                         </th>
+                                        <th name="th_status"
+                                            class="text-left">
+                                            <span>Status</span>
+                                        </th>
                                     </tr>
                                 </thead>
                                 <t t-foreach="reservations" t-as="line">
@@ -70,7 +74,10 @@
                                             </td>
 
                                             <td>
-                                                <span t-esc="line['responsible_user'][1]"/>
+                                                <span t-esc="line['responsible_user']"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="line['state']"/>
                                             </td>
                                         </tr>
                                     </tbody>

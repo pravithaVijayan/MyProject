@@ -46,9 +46,12 @@ class BookReservation(models.Model):
     name = fields.Char(string='Scholar ID', readonly=True, required=True,
                        index=True, copy=False, default='New')
     scholars = fields.Many2one('research.scholars', string='Scholar')
-
     books = fields.Many2many('product.product',
                              domain="[('product_tmpl_id.is_book', '=', True)]")
+    # books = fields.Many2many('product.product', 'reservation_id',
+    #                         string='books',
+    #                         domain="[('product_tmpl_id.is_book', '=', True)]",
+    #                          )
     id = fields.Many2many(related='books.product_id')
     responsible_user = fields.Many2one('res.users', string='Responsible',
                                        default=lambda self: self.env.user.id)
@@ -71,8 +74,7 @@ class BookReservation(models.Model):
         self.state = 'submit'
 
     def action_approve(self):
-        # self.state = 'approve'
-        pass
+        self.state = 'approve'
 
     def action_reject(self):
         self.state = 'cancel'
@@ -113,3 +115,9 @@ class BookReservation(models.Model):
         vals['name'] = self.env['ir.sequence'].next_by_code(
             'book.reservation')
         return super(BookReservation, self).create(vals)
+
+
+# class ProductProduct(models.Model):
+#     _inherit = 'product.product'
+#
+#     reservation_id = fields.Many2one('book.reservation')

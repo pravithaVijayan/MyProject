@@ -13,7 +13,7 @@ class SalesBookOrderView(models.Model):
         return {
 
             'name': line.name,
-            'price_unit' : line.lst_price,
+            'price_unit': line.lst_price,
             'product_id': line.id,
         }
 

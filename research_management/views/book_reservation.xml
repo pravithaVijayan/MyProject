@@ -62,7 +62,7 @@
 
                 <field name="name"/>
                 <field name="scholars"/>
-                <field name="books"/>
+<!--                <field name="books"/>-->
                 <field name="responsible_user"/>
                 <field name="state"/>
             </tree>
