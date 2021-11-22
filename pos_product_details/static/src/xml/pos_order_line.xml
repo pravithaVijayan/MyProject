@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="Orderline" t-inherit="point_of_sale.Orderline"
+       t-inherit-mode="extension" owl="1">
+        <xpath expr="//ul[hasclass('info-list')]" position="inside">
+            <t t-if="props.line.product_description">
+<!--                <span>Description : </span>-->
+                <t t-esc="props.line.product_description" />
+            </t>
+        </xpath>
+    </t>
+</templates>

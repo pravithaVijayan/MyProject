@@ -15,7 +15,8 @@
         'views/point_of_sale.xml',
     ],
     'qweb': [
-        'static/src/xml/pos_receipt.xml',
+        'static/src/xml/pos_order_line.xml',
+        'static/src/xml/receipt.xml',
     ],
     'installable': True,
     'license': 'LGPL-3',
