@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="pos_config_view_form" model="ir.ui.view">
+        <field name="name">pos.config.form.view.inherit.discount.limit</field>
+        <field name="model">pos.config</field>
+        <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@id='category_reference']" position="after">
+                <div class="col-12 col-lg-6 o_setting_box">
+                    <!--                     groups="product.group_product_variant">-->
+                    <div class="o_setting_left_pane">
+                        <field name="is_discount_limit"
+                               attrs="{'readonly': [('has_active_session','=', True)]}"/>
+                    </div>
+                    <div class="o_setting_right_pane">
+                        <label for="is_discount_limit"/>
+                        <div class="text-muted">
+                            Allow limit discounts on orders
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <div class="content-group mt16"
+                                 attrs="{'invisible': [('is_discount_limit', '=', False)]}">
+                                <label for="discount_limit"/>
+                                <field name="discount_limit"
+                                       attrs="{'readonly': [('has_active_session','=', True)]}"/>
+                                <span>%%</span>
+<!--                                <field name="non_discount_categ_ids"-->
+<!--                                       widget="many2many_tags"-->
+<!--                                       attrs="{'readonly': [('has_active_session','=', True)]}"/>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>
