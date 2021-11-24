@@ -9,10 +9,10 @@
     'sequence': 1,
     'summary': 'Product Description in the Point of Sale ',
     'description': """""",
-    'depends': ['point_of_sale'],
+    'depends': ['point_of_sale','pos_discount'],
     'data': [
         'views/pos_config_discount.xml',
-        # 'views/point_of_sale.xml',
+        'views/point_of_sale_template.xml',
     ],
     'qweb': [
         # 'static/src/xml/pos_order_line.xml',
