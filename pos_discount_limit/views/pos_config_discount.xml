@@ -24,9 +24,10 @@
                                 <field name="discount_limit"
                                        attrs="{'readonly': [('has_active_session','=', True)]}"/>
                                 <span>%%</span>
-<!--                                <field name="non_discount_categ_ids"-->
-<!--                                       widget="many2many_tags"-->
-<!--                                       attrs="{'readonly': [('has_active_session','=', True)]}"/>-->
+                                <field name="non_discount_categ_ids"
+                                       widget="many2many_tags"
+                                       attrs="{'readonly': [('has_active_session','=', True)]}"
+                                       groups="point_of_sale.group_pos_manager"/>
                             </div>
                         </div>
                     </div>
