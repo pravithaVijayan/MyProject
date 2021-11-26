@@ -54,11 +54,28 @@ class ImportReportWizard(models.TransientModel):
         domain_names = []
         for book in self.book_ids:
             domain_names.append(book.name)
-        if self.scholar_id:
+        if self.scholar_id and self.book_ids:
             data = {
                 'scholars_id': self.scholar_id.id,
                 'state': 'cancel',
-                # 'books': domain_names,
+                'books': tuple(domain_names),
+            }
+            self.env.cr.execute("""
+                                          SELECT 
+                                                  b.name as name,
+                                                  b.state as state,
+                                                  r.name as responsible_user
+                      FROM 
+                          book_reservation b
+                          LEFT OUTER JOIN res_partner r ON(b.responsible_user+1=r.id)
+                          LEFT OUTER JOIN product_book p ON(b.id=p.reservation_id)
+                    WHERE (b.scholars =%(scholars_id)s AND b.state <> %(state)s ) AND 
+                            p.product_name IN %(books)s
+                                  """, data)
+        elif self.scholar_id:
+            data = {
+                'scholars_id': self.scholar_id.id,
+                'state': 'cancel',
             }
             self.env.cr.execute("""
                                           SELECT 
@@ -80,7 +97,7 @@ class ImportReportWizard(models.TransientModel):
                           LEFT OUTER JOIN res_partner r ON(b.responsible_user+1=r.id)
                                 """)
         result = self.env.cr.dictfetchall()
-        print(result)
+        # print(result)
         data = {
             'form': self.read()[0],
             'reservations': result,

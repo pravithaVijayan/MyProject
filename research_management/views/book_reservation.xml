@@ -1,6 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <!--form view-->
+    <record id="product_book_form" model="ir.ui.view">
+        <field name="name">Book Products</field>
+        <field name="model">product.book</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="product_id"/>
+                    </group>
+                    <group>
+                        <field name="default_code" string="Defaoult code"/>
+                    </group>
+                    <group>
+                        <field name="list_price" string="Price"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!--tree view-->
+    <record id="product_book_tree" model="ir.ui.view">
+        <field name="name">Book Products</field>
+        <field name="model">product.book</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="product_id"/>
+                <field name="default_code"/>
+                <field name="list_price"/>
+
+            </tree>
+        </field>
+    </record>
+    <!--form view-->
     <record id="book_reservation_form" model="ir.ui.view">
         <field name="name">Book Reservation</field>
         <field name="model">book.reservation</field>
@@ -10,7 +43,8 @@
                     <button string="Confirm" name="action_confirm"
                             states="draft" type="object" class="oe_highlight"/>
                     <button string="Create Invoice" name="action_create_invoice"
-                            states="approve" type="object" class="oe_highlight"/>
+                            states="approve" type="object"
+                            class="oe_highlight"/>
                     <button string="Approve" name="action_approve"
                             states="submit" type="object" class="oe_highlight"
                             groups="research_management.group_event_manager"/>
@@ -62,7 +96,7 @@
 
                 <field name="name"/>
                 <field name="scholars"/>
-<!--                <field name="books"/>-->
+                <!--                <field name="books"/>-->
                 <field name="responsible_user"/>
                 <field name="state"/>
             </tree>
@@ -88,7 +122,7 @@
             </search>
         </field>
     </record>
-<!--    inherit product and add field -->
+    <!--    inherit product and add field -->
     <record model="ir.ui.view" id="product_view">
         <field name="name">product.view</field>
         <field name="model">product.template</field>
@@ -144,10 +178,10 @@
               parent="research_book_reservation_root"
               action="action_import_report"
               sequence="3"/>
-<!--    <menuitem id="report_xlsx_root"-->
-<!--              name="Report XLSX"-->
-<!--              parent="research_book_reservation_root"-->
-<!--              action="action_xlsx_report"-->
-<!--              sequence="3"/>-->
+    <!--    <menuitem id="report_xlsx_root"-->
+    <!--              name="Report XLSX"-->
+    <!--              parent="research_book_reservation_root"-->
+    <!--              action="action_xlsx_report"-->
+    <!--              sequence="3"/>-->
 
 </odoo>

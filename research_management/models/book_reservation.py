@@ -46,8 +46,7 @@ class BookReservation(models.Model):
     name = fields.Char(string='Scholar ID', readonly=True, required=True,
                        index=True, copy=False, default='New')
     scholars = fields.Many2one('research.scholars', string='Scholar')
-    books = fields.Many2many('product.product',
-                             domain="[('product_tmpl_id.is_book', '=', True)]")
+    books = fields.One2many('product.book','reservation_id')
     # books = fields.Many2many('product.product', 'reservation_id',
     #                         string='books',
     #                         domain="[('product_tmpl_id.is_book', '=', True)]",
@@ -116,6 +115,17 @@ class BookReservation(models.Model):
             'book.reservation')
         return super(BookReservation, self).create(vals)
 
+
+class ProductBooks(models.Model):
+    _name = 'product.book'
+
+    product_id = fields.Many2one('product.product',
+                             domain="[('product_tmpl_id.is_book', '=', True)]")
+    reservation_id = fields.Many2one('book.reservation')
+    ref_name = fields.Char(related="reservation_id.name")
+    default_code = fields.Char(related="product_id.default_code", string="Default code", store='true')
+    product_name = fields.Char(related="product_id.name", store='true')
+    list_price = fields.Float(related="product_id.list_price", string="Price", store='true')
 
 # class ProductProduct(models.Model):
 #     _inherit = 'product.product'
