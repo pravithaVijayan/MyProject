@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.website</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="20"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('settings')]" position="inside">
+                <div class="app_settings_block" data-string="Website"
+                     string="Website" data-key="website"
+                     groups="website.group_website_designer">
+                    <h2>Products</h2>
+                    <div class="row mt16 o_settings_container"
+                         id="webmaster_settings">
+                        <div class="col-12 col-lg-6 o_setting_box"
+                             id="google_maps_setting">
+                            <div class="o_setting_left_pane">
+                                <field name="is_product"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="is_product"/>
+                                <div class="text-muted">
+                                    Choose Products To see BOM on your website
+                                    Cart
+                                </div>
+                                <div class="content-group"
+                                     attrs="{'invisible': [('is_product', '=', False)]}">
+                                    <div class="row mt16">
+                                        <label class="col-lg-3 o_light_label"
+                                               string="Product"
+                                               for="product_ids"/>
+                                        <field name="product_ids"
+                                               attrs="{'required': [('is_product', '=', True)]}"
+                                               widget="many2many_tags"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>
