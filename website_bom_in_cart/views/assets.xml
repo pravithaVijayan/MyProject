@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="assets_frontend" name="im assets"  inherit_id="web.assets_frontend">
+        <xpath expr="//script[last()]" position="after">
+            <script type="text/javascript" src="/website_bom_in_cart/static/src/js/cart.js"/>
+        </xpath>
+    </template>
+</odoo>

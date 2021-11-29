@@ -9,10 +9,12 @@
     'category': 'Website/eLearning',
     'website': 'https://www.odoo.com/page/billing',
     'images': [],
-    'depends': ['base_setup', 'mrp'],
+    'depends': ['base_setup', 'mrp','website','website_sale'],
     'data': [
         # 'security/ir.model.access.csv',
         'views/website_config_settings.xml',
+        'views/template.xml',
+        # 'views/assets.xml',
     ],
     'demo': [],
     'qweb': [],

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="website_sale_bom" inherit_id="website_sale.cart_lines">
+        <xpath expr="//table[@id='cart_products']//td[hasclass('td-product_name')]"
+               position="inside">
+           <div>hiiiiiiiiii</div>
+        </xpath>
+    </template>
+</odoo>
