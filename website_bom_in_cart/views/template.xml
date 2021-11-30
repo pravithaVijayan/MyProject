@@ -3,7 +3,17 @@
     <template id="website_sale_bom" inherit_id="website_sale.cart_lines">
         <xpath expr="//table[@id='cart_products']//td[hasclass('td-product_name')]"
                position="inside">
-           <div>hiiiiiiiiii</div>
+            <div>
+
+<!--                <t t-call="website_sale.cart_line_product_link">-->
+<!--                    <t t-foreach="line.product_id.product_tmpl_id.bom_line_ids"-->
+<!--                       t-as="o">-->
+<!--                        <strong t-field="o.product_id"/>-->
+                    BOM count : <strong t-field="line.product_id.product_tmpl_id.bom_count"/>
+<!--                    </t>-->
+<!--                </t>-->
+            </div>
+<!--            <div>hiii</div>-->
         </xpath>
     </template>
 </odoo>
